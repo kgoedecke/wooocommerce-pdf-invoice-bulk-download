@@ -150,7 +150,7 @@ if ( ! class_exists( 'WooCommerce_PDF_Invoices_Bulk_Download' ) ) {
          * @since 1.0.0
          */
         public function add_admin_page() {
-            $icon_url = plugins_url( 'woocommerce-pdf-invoices-bulk-download/images/invoice-download-icon.svg' );
+            $icon_url = plugin_dir_url( __FILE__ ) . 'images/invoice-download-icon.svg';
 
             $this->plugin_screen_hook_suffix = add_menu_page( 
                 esc_html__( 'Invoice Bulk Download', 'woocommerce-pdf-invoices-bulk-download' ),
