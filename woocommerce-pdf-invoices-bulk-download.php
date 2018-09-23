@@ -4,7 +4,7 @@ Plugin Name: WooCommerce PDF Invoice Bulk Download
 Plugin URI:
 Description: WooCommerce PDF Invoice Bulk Download Extension Plugin
 Version:     1.0.0
-Author:      Kevin Goedecke
+Author:      HaveALook UG
 Author URI:  https://havealooklabs.com/
 License:     GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
