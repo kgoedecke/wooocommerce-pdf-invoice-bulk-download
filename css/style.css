@@ -1,0 +1,39 @@
+.invoice-bulk-download .input-group {
+	margin-bottom: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.invoice-bulk-download fieldset[disabled] {
+	display: none;
+}
+
+.invoice-bulk-download label {
+	float: left;
+	width: 150px;
+	font-weight: bold;
+	line-height: 28px;
+}
+
+.invoice-bulk-download input[type="checkbox"] {
+	float: left;
+	margin: 7px 7px 7px 0;
+}
+
+.invoice-bulk-download select {
+	margin: 0;
+}
+
+.invoice-bulk-download .control-group {
+	display: flex;
+	flex-direction: row;
+}
+
+.invoice-bulk-download .messages__wrap {
+	padding: 15px 0;
+}
+
+.invoice-bulk-download .message__item {
+	display: none;
+}

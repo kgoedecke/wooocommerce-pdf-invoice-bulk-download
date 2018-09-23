@@ -1,0 +1,9 @@
+{
+    "name": "kgoedecke/woocommerce-pdf-invoices-bulk-download",
+    "description": "WooCommerce Plugin to download invoices in bulkes",
+    "require":
+    {
+        "phpzip/phpzip": ">=2.0.7",
+        "a5hleyrich/wp-background-processing": "^1.0"
+    }
+}
