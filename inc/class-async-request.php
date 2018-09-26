@@ -52,7 +52,7 @@ class WooCommerce_PDF_Invoices_Bulk_Async_Request extends WP_Async_Request {
 			return new WP_Error( 'error', sprintf( esc_html__( 'Order from %1$s to %2$s not found.', 'woocommerce-pdf-invoices-bulk-download' ), $this->date_after, $this->date_before ) );
 		}
 
-		return $this->run( $orders);
+		return $this->run( $orders );
 	}
 
 	public function create_zip( $files = array(), $destination = '', $args = array(), $callback = null ) {
@@ -126,6 +126,10 @@ class WooCommerce_PDF_Invoices_Bulk_Async_Request extends WP_Async_Request {
 
 		} else if ( function_exists( 'wcpdf_get_document' ) ) {
 			$r = $this->woocommerce_pdf_invoices_packing_slips( $orders );
+
+		} else if ( defined( 'PDFPLUGINPATH' ) ) {
+			require_once( PDFPLUGINPATH . 'classes/class-pdf-send-pdf-class.php' );
+			$r = $this->woocommerce_pdf_invoice_plugin( $orders );
 		}
 
 		return apply_filters( 'woocommerce-pdf-invoices-bulk-download/run/after', $r, $orders, $this );
@@ -180,6 +184,22 @@ class WooCommerce_PDF_Invoices_Bulk_Async_Request extends WP_Async_Request {
 					@rmdir( dirname( $file_zip ) );
 				}
 		} );
+	}
+
+	public function woocommerce_pdf_invoice_plugin( $orders ) {
+		$files_to_zip = array();
+
+		foreach ( $orders as $order ) {
+			$files_to_zip[] = WC_send_pdf::get_woocommerce_invoice( $order );
+		}
+
+		$archive_name = $this->get_archive_name();
+
+		return $this->create_zip(
+			$files_to_zip,
+			$archive_name,
+			array( 'overwrite' => true )
+		);
 	}
 
 	public function get_archive_name() {
