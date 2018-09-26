@@ -29,6 +29,7 @@ if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 $depends_plugins = array(
     'woocommerce-pdf-invoices/bootstrap.php',
     'woocommerce-pdf-invoices-packing-slips/woocommerce-pdf-invoices-packingslips.php',
+    'woocommerce-pdf-invoice/woocommerce-pdf-invoice.php',
 );
 
 $plugin_is_activated = false;
@@ -72,7 +73,9 @@ function woo_pdf_invoices_buld_download_depends_fail() {
     $messages = array();
     $messages[] = sprintf( '<a href="%1$s" target="_blank">%2$s</a>', esc_url( 'https://wordpress.org/plugins/woocommerce-pdf-invoices/' ), esc_html__( 'WooCommerce PDF Invoices', 'woocommerce-pdf-invoices-bulk-download' ) );
     $messages[] = sprintf( '<a href="%1$s" target="_blank">%2$s</a>', esc_url( 'https://wordpress.org/plugins/woocommerce-pdf-invoices-packing-slips/' ), esc_html__( 'WooCommerce PDF Invoices & Packing Slips', 'woocommerce-pdf-invoices-bulk-download' ) );
+    $messages[] = sprintf( '<a href="%1$s" target="_blank">%2$s</a>', esc_url( 'https://woocommerce.com/products/pdf-invoices/' ), esc_html__( 'PDF Invoices', 'woocommerce-pdf-invoices-bulk-download' ) );
 
+    
     $html_message = sprintf( '<div class="error"><p><strong>%1$s</strong> %2$s %3$s</p></div>', esc_html__( 'WooCommerce PDF Invoices Bulk Download Extension', 'woocommerce-pdf-invoices-bulk-download' ), esc_html__( 'plugin are depends from one of plugins:', 'woocommerce-pdf-invoices-bulk-download' ), join( ', ', $messages ) );
 
     echo wp_kses_post( $html_message );
